@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerala_travel_mart/screens/MenuScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,7 +11,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: screenHeight *0.12, // Use relative spacing
+                  height: screenHeight * 0.12, // Use relative spacing
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -153,7 +153,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 40,
                       width: 110,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MenuScreen()));
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: const [
@@ -175,8 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      width:
-                          screenWidth * 0.05,
+                      width: screenWidth * 0.05,
                     )
                   ],
                 ),
