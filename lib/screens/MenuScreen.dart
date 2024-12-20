@@ -24,6 +24,18 @@ final PageController _pageController = PageController(initialPage: 0);
 
 Timer? _timer;
 
+Map<String, String> title = {
+  "Exhibitors": "assets/menuIcons/exhibitors-icon.png",
+  "Programmes": "assets/menuIcons/programs-icon.png",
+  "Floor Plan": "assets/menuIcons/floor-plan-icon.png",
+  "Quick Help": "assets/menuIcons/Quickhelp-icon.png",
+  "My Meetings": "assets/menuIcons/myMeeting-icon.png",
+  "Venue": "assets/menuIcons/venue-icon.png",
+  "Activities": "assets/menuIcons/activities-icon.png",
+  "KTM": "assets/menuIcons/KTM-icon.png",
+  "Moments": "assets/menuIcons/moments-icon.png",
+};
+
 class _MenuScreenState extends State<MenuScreen> {
   @override
   void startTimer() {
@@ -52,28 +64,47 @@ class _MenuScreenState extends State<MenuScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("kerala")),
+      appBar: AppBar(
+          toolbarHeight: 70,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                width: 200,
+                height: 70,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Image.asset("assets/images/KTM-white-logo.jpg"),
+              ),
+              Container(
+                height: 50,
+                width: 50,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Image.asset("assets/images/scanner-icon.jpg"),
+              ),
+            ],
+          )),
       drawer: Drawer(),
       body: Padding(
         padding: const EdgeInsets.all(9.0),
         child: Column(
           children: [
             Container(
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
-              height: 200,
+              height: MediaQuery.of(context).size.height / 4,
               width: double.infinity,
-              child: PageView.builder(
-                  onPageChanged: (value) {
-                    setState(() {
-                      _activepage = value;
-                    });
-                  },
-                  controller: _pageController,
-                  itemCount: _images.length,
-                  itemBuilder: (context, index) {
-                    return _pages[index];
-                  }),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: PageView.builder(
+                    onPageChanged: (value) {
+                      setState(() {
+                        _activepage = value;
+                      });
+                    },
+                    controller: _pageController,
+                    itemCount: _images.length,
+                    itemBuilder: (context, index) {
+                      return _pages[index];
+                    }),
+              ),
             ),
             SizedBox(
               height: 10,
@@ -98,7 +129,55 @@ class _MenuScreenState extends State<MenuScreen> {
                           ),
                         ),
                       )),
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(3),
+                child: GridView.builder(
+                    itemCount: title.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 15,
+                            mainAxisSpacing: 15),
+                    itemBuilder: (context, index) {
+                      String key = title.keys.elementAt(index);
+                      String _iconPath = title[key]!;
+                      return Container(
+                        height: 20,
+                        width: 20,
+                        decoration: BoxDecoration(
+                            color: Color(0xFFFEDD14),
+                            borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(17),
+                                bottomRight: Radius.circular(17)),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.3),
+                                  offset: Offset(4, 4),
+                                  blurRadius: 2,
+                                  spreadRadius: 1)
+                            ]),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 70, child: Image.asset(_iconPath)),
+                            Text(
+                              key,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w300,
+                                color: const Color.fromARGB(255, 0, 0, 0),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    }),
+              ),
+            ),
           ],
         ),
       ),
@@ -112,9 +191,18 @@ class ImagePlaceholders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      imagePath!,
-      fit: BoxFit.cover,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        clipBehavior: Clip.hardEdge,
+        child: Image.network(
+          imagePath!,
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 }
