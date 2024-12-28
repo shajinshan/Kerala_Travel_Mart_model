@@ -60,6 +60,7 @@ class _MenuScreenState extends State<MenuScreen> {
     // TODO: implement initState
     super.initState();
     startTimer();
+    dispose();
   }
 
   Widget build(BuildContext context) {
@@ -93,6 +94,7 @@ class _MenuScreenState extends State<MenuScreen> {
               width: double.infinity,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
+                
                 child: PageView.builder(
                     onPageChanged: (value) {
                       setState(() {
