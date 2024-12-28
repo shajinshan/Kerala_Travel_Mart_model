@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Stack(
           children: [
             Container(
-              height: 90,
+              height: 100,
               width: double.infinity,
               child: Image.asset(
                 "assets/images/ktm-topbar-icon.png",
@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Column(
               children: [
                 Container(
-                  height: 100,
+                  height: screenHeight / 6,
                   width: double.infinity,
                 ),
                 Container(

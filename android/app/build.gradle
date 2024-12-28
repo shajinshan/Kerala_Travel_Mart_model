@@ -65,3 +65,14 @@ flutter {
 }
 
 dependencies {}
+android {
+    compileSdkVersion 34 // Ensure this matches the installed SDK version in Android Studio
+
+    defaultConfig {
+        applicationId "your.package.name"
+        minSdkVersion 21
+        targetSdkVersion 34 // This should match the compileSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+}
