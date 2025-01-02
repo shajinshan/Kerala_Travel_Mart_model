@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kerala_travel_mart/screens/MenuScreen.dart';
+import 'package:kerala_travel_mart/screens/company/company_register.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,53 +16,61 @@ class _LoginScreenState extends State<LoginScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFFEDD14),
+      backgroundColor: const Color.fromARGB(255, 238, 238, 238),
       body: SingleChildScrollView(
         child: Stack(
           children: [
             Container(
-              height: 100,
+              height: 280,
               width: double.infinity,
-              child: Image.asset(
-                "assets/images/ktm-topbar-icon.png",
-                fit: BoxFit.fill,
-              ),
+              decoration: const BoxDecoration(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(100),
+                      bottomRight: Radius.circular(100))),
             ),
             Column(
               children: [
-                Container(
+                SizedBox(
                   height: screenHeight / 6,
                   width: double.infinity,
                 ),
-                Container(
-                  child: Image.asset("assets/images/KTM-logo.png"),
+
+                //logo icon
+                SizedBox(
                   height: 120,
                   width: 200,
+                  child: Image.asset(
+                    "assets/icons/logo.png",
+                    fit: BoxFit.contain,
+                  ),
                 ),
                 Container(
                   padding: const EdgeInsets.all(20),
                   height: 300,
                   width: 300,
                   decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        offset: const Offset(3, 4),
-                        spreadRadius: 3,
-                        blurRadius: 5,
-                      )
-                    ],
-                    color: const Color.fromARGB(255, 143, 36, 219),
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20)),
-                  ),
+                      boxShadow: const [
+                        // BoxShadow(
+                        //   color: const Color.fromARGB(0, 255, 255, 255)
+                        //       .withOpacity(0.4),
+                        //   offset: const Offset(3, 4),
+                        //   spreadRadius: 3,
+                        //   blurRadius: 5,
+                        // )
+                      ],
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(12)),
+                  //login box
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       const Text(
                         "Choose Your Login Type",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         height: 10,
@@ -70,15 +79,24 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 50,
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text(
-                            "Buyer",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const CompanyRegister()));
+                          },
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 52, 175, 48),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(6))),
+                          child: const Text(
+                            "Comapany Register",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                fontSize: 18),
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -86,14 +104,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromARGB(255, 52, 175, 48),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6))),
                           child: const Text(
                             "Seller",
                             style: TextStyle(color: Colors.white, fontSize: 18),
                           ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(6))),
                         ),
                       ),
                       SizedBox(
@@ -101,24 +120,40 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromARGB(255, 52, 175, 48),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6))),
                           child: const Text(
                             "Media",
                             style: TextStyle(color: Colors.white, fontSize: 18),
                           ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(6))),
                         ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 50,
+                SizedBox(
+                  height: screenHeight * 0.019,
                 ),
                 Container(
+                  height: 120,
+                  width: 200,
                   padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      // BoxShadow(
+                      //     color: Colors.black.withOpacity(0.3),
+                      //     offset: const Offset(2, 3),
+                      //     blurRadius: 4,
+                      //     spreadRadius: 2)
+                    ],
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20)),
+                  ),
                   child: const Column(
                     children: [
                       Text(
@@ -127,25 +162,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       )
                     ],
                   ),
-                  height: 120,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          offset: const Offset(2, 3),
-                          blurRadius: 4,
-                          spreadRadius: 2)
-                    ],
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20)),
-                  ),
                 ),
                 SizedBox(
-                  height: screenHeight * 0.12, // Use relative spacing
+                  height: screenHeight * 0.055, // Use relative spacing
                 ),
+
+                //SKIP button
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -159,9 +181,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               MaterialPageRoute(
                                   builder: (context) => MenuScreen()));
                         },
-                        child: Row(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 123, 20, 20),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6))),
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.skip_next,
                               color: Colors.white,
@@ -173,14 +200,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ],
                         ),
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6))),
                       ),
                     ),
                     SizedBox(
                       width: screenWidth * 0.05,
+                      height: screenHeight * 0.01,
                     )
                   ],
                 ),
