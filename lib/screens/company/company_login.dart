@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kerala_travel_mart/components/custom_text_field.dart';
+import 'package:kerala_travel_mart/data/models/company_data_model.dart';
+import 'package:provider/provider.dart';
 
 class CompanyLogin extends StatefulWidget {
   const CompanyLogin({super.key});
@@ -12,14 +13,15 @@ class CompanyLogin extends StatefulWidget {
 class _CompanyLoginState extends State<CompanyLogin> {
   //stores error message
   String errorMsg = "";
+
   //password field hide
   bool hiddenTxt = true;
 
   //mail controller
-  TextEditingController _mailController = TextEditingController();
+  final TextEditingController _mailController = TextEditingController();
 
   //password controller
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   //validate mail
   void validMail(dynamic mail) {
@@ -42,7 +44,17 @@ class _CompanyLoginState extends State<CompanyLogin> {
     }
   }
 
-//valid Password
+//login company
+  void loginCompany() {
+    String t = Provider.of<CompanyDataModel>(context, listen: false)
+        .login(_mailController.text, _passwordController.text);
+
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text(t),
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,15 +74,44 @@ class _CompanyLoginState extends State<CompanyLogin> {
                 height: 40,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: InputField(
-                  label: "Enter E-mail or Phone",
+                padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+                child: TextField(
+                  obscureText: false,
+                  onChanged: (value) => validMail(value),
                   controller: _mailController,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: const Color.fromARGB(255, 223, 233, 238),
+                    labelText: "E-mail or Number",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 239, 245, 248),
+                        width: 1.0,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 239, 245, 248),
+                        width: 1.0,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
                 child: TextField(
+                  controller: _passwordController,
+                  // onChanged: (value) => validMail(value),
                   obscureText: hiddenTxt,
 
                   // controller: controller,
@@ -82,8 +123,8 @@ class _CompanyLoginState extends State<CompanyLogin> {
                           });
                         },
                         child: hiddenTxt
-                            ? Icon(Icons.remove_red_eye_outlined)
-                            : Icon(Icons.remove_red_eye)),
+                            ? const Icon(Icons.remove_red_eye_outlined)
+                            : const Icon(Icons.remove_red_eye)),
                     filled: true,
                     fillColor: const Color.fromARGB(255, 223, 233, 238),
                     labelText: "Password",
@@ -116,18 +157,18 @@ class _CompanyLoginState extends State<CompanyLogin> {
               ),
               Text(
                 errorMsg,
-                style: TextStyle(color: Colors.red),
+                style: const TextStyle(color: Colors.red),
               ),
 
               //btn login
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  //Register button
+                  //login button
                   GestureDetector(
-                    onTap: () => validMail(_mailController.text),
+                    onTap: () => loginCompany(),
                     child: Container(
-                      padding: EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(top: 10),
                       height: 50,
                       width: 200,
                       decoration: BoxDecoration(
