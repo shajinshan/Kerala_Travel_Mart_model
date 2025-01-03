@@ -38,6 +38,8 @@ dependencies:
   google_fonts: ^6.2.1
   path_provider: ^2.1.5
   intl: ^0.20.1
+  provider:
+  lottie: ^3.3.0
   
 
 dev_dependencies:
