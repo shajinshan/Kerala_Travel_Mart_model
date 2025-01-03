@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerala_travel_mart/screens/company/company_login.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -34,11 +35,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 Color.fromARGB(255, 89, 30, 30),
                 Color.fromARGB(255, 126, 25, 25),
               ])),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   //home
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 50),
                     child: ListTile(
                       leading: Icon(
@@ -55,13 +56,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     ),
                   ),
 
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(right: 30, left: 20),
                     child: Divider(),
                   ),
 
                   //Sync Data
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 50),
                     child: ListTile(
                       leading: Icon(
@@ -76,12 +77,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     ),
                   ),
 
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(right: 30, left: 20),
                     child: Divider(),
                   ),
                   //Documents
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 50),
                     child: ListTile(
                       leading: Icon(
@@ -95,12 +96,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
                               fontWeight: FontWeight.w400)),
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(right: 30, left: 20),
                     child: Divider(),
                   ),
                   //Feedback
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 50),
                     child: ListTile(
                       leading: Icon(
@@ -115,13 +116,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     ),
                   ),
 
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(right: 30, left: 20),
                     child: Divider(),
                   ),
 
                   //about app
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 50),
                     child: ListTile(
                       leading: Icon(
@@ -136,19 +137,26 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     ),
                   ),
 
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(right: 30, left: 20),
                     child: Divider(),
                   ),
                   //Logout
                   Padding(
-                    padding: EdgeInsets.only(left: 50),
+                    padding: const EdgeInsets.only(left: 50),
                     child: ListTile(
-                      leading: Icon(
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const CompanyLogin()));
+                      },
+                      leading: const Icon(
                         Icons.login,
                         color: Colors.white,
                       ),
-                      title: Text("Log in",
+                      title: const Text("Log in",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
