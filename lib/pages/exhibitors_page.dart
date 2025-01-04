@@ -14,6 +14,9 @@ class ExhibitorsPage extends StatefulWidget {
 }
 
 class _ExhibitorsPageState extends State<ExhibitorsPage> {
+  //search query
+  String searchQuery = "";
+
   bool filterBtn = false;
 
   // Refresh function that calls the 'listAll()' method
@@ -25,6 +28,11 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<Company> filteredData =
+        Provider.of<CompanyDataModel>(context, listen: false).searchComapany(searchQuery);
+
+        
     return Scaffold(
       floatingActionButton: IconButton(
         onPressed: () {
@@ -33,13 +41,11 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
         icon: Icon(Icons.refresh),
       ),
       appBar: const CustomAppBar(),
-
-      // Using Consumer to rebuild the widget tree when data changes
       body: Consumer<CompanyDataModel>(
         builder: (context, companyDataModel, child) {
           return Column(
             children: [
-              // Top section with filter buttons
+              // Top filter buttons
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
@@ -55,7 +61,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                             colors: [
                               Color.fromARGB(255, 89, 30, 30),
                               Color.fromARGB(255, 126, 25, 25),
@@ -63,7 +69,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.only(top: 20, left: 20),
+                          padding: const EdgeInsets.only(top: 20, left: 20),
                           child: Text(
                             "Exhibitors",
                             style: GoogleFonts.sarabun(
@@ -109,7 +115,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                                         ),
                                       ],
                                       onChanged: (value) {},
-                                      hint: Padding(
+                                      hint: const Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Text("Category"),
                                       ),
@@ -138,7 +144,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                                         ),
                                       ],
                                       onChanged: (value) {},
-                                      hint: Padding(
+                                      hint: const Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Text("Hall"),
                                       ),
@@ -158,28 +164,33 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                 children: [
                   Expanded(
                     child: TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          searchQuery = value;
+                        });
+                      },
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: Color.fromARGB(255, 223, 233, 238),
+                        fillColor: const Color.fromARGB(255, 223, 233, 238),
                         labelText: "Search Exhibitors",
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color.fromARGB(255, 239, 245, 248),
                             width: 1.0,
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color.fromARGB(255, 239, 245, 248),
                             width: 1.0,
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -194,7 +205,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                         filterBtn = !filterBtn;
                       });
                     },
-                    icon: Icon(Icons.filter_list),
+                    icon: const Icon(Icons.filter_list),
                     color: Colors.black54,
                   ),
                 ],
@@ -203,9 +214,9 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
               // List of Companies
               Expanded(
                 child: ListView.builder(
-                  itemCount: companyDataModel.allCompanyProfile.length,
+                  itemCount: filteredData.length,
                   itemBuilder: (context, index) {
-                    Company company = companyDataModel.allCompanyProfile[index];
+                    Company company = filteredData[index];
                     return ListOfCompany(company: company);
                   },
                 ),

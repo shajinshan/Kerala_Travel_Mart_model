@@ -6,6 +6,7 @@ import 'package:kerala_travel_mart/components/app_bar.dart';
 import 'package:kerala_travel_mart/components/drawer.dart';
 import 'package:kerala_travel_mart/pages/exhibitors_page.dart';
 import 'package:kerala_travel_mart/pages/floor_plan_page.dart';
+import 'package:kerala_travel_mart/pages/profile_page.dart';
 import 'package:kerala_travel_mart/pages/programmes_page.dart';
 
 import '../components/image_placeholder.dart';
@@ -26,13 +27,12 @@ List<String> _images = [
 late List<Widget> _pages;
 int _activepage = 0;
 
-final Color _color = Color.fromARGB(255, 52, 175, 48);
-
 final PageController _pageController = PageController(initialPage: 0);
 
 Timer? _timer;
 
 Map<String, String> title = {
+  "Profile": "assets/menuIcons/profile.png",
   "Exhibitors": "assets/menuIcons/exhibitors-icon.png",
   "Programmes": "assets/menuIcons/programs-icon.png",
   "Floor Plan": "assets/menuIcons/floor-plan-icon.png",
@@ -45,7 +45,6 @@ Map<String, String> title = {
 };
 
 class _MenuScreenState extends State<MenuScreen> {
-  @override
   void startTimer() {
     _timer = Timer.periodic(Duration(seconds: 3), (timer) {
       if (_pageController.page == _pages.length - 1) {
@@ -53,11 +52,13 @@ class _MenuScreenState extends State<MenuScreen> {
             duration: Duration(milliseconds: 500), curve: Curves.bounceInOut);
       } else {
         _pageController.nextPage(
-            duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+            duration:const Duration(milliseconds: 500), curve: Curves.easeInOut);
       }
-    });
+    }
+    );
   }
-@override
+
+  @override
   void initState() {
     _pages = List.generate(
       _images.length,
@@ -97,6 +98,11 @@ class _MenuScreenState extends State<MenuScreen> {
             MaterialPageRoute(builder: (context) => const FloorPlanPage()));
         return;
 
+      case "profile":
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ProfilePage()));
+        return;
+
       default:
         print(data);
         return;
@@ -107,7 +113,7 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 245, 242, 242),
-      appBar:const CustomAppBar(),
+      appBar: const CustomAppBar(),
 
       //drawer
       drawer: const CustomDrawer(),
@@ -135,7 +141,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     }),
               ),
             ),
-          const  SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -174,7 +180,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             mainAxisSpacing: 20),
                     itemBuilder: (context, index) {
                       String key = title.keys.elementAt(index);
-                      String _iconPath = title[key]!;
+                      String iconPath = title[key]!;
                       return GestureDetector(
                         onTap: () => pagRoute(key),
                         child: Container(
@@ -200,7 +206,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                  height: 50, child: Image.asset(_iconPath)),
+                                  height: 50, child: Image.asset(iconPath)),
                               Text(
                                 key,
                                 style: const TextStyle(

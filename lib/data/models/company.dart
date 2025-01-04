@@ -1,4 +1,5 @@
 class Company {
+  String id;
   String companyName;
   String registerNumber;
   String date;
@@ -12,10 +13,11 @@ class Company {
   String state;
   String pin;
   String country;
-    String password;
+  String password;
 
   Company(
-      {required this.companyName,
+      {required this.id,
+        required this.companyName,
       required this.registerNumber,
       required this.date,
       required this.email,

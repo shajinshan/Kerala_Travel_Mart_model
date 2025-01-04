@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kerala_travel_mart/data/models/company_data_model.dart';
+import 'package:kerala_travel_mart/pages/profile_page.dart';
 import 'package:provider/provider.dart';
 
 class CompanyLogin extends StatefulWidget {
@@ -24,23 +25,40 @@ class _CompanyLoginState extends State<CompanyLogin> {
   final TextEditingController _passwordController = TextEditingController();
 
   //validate mail
-  void validMail(dynamic mail) {
-    if (int.tryParse(mail) != null && mail.length != 10) {
+  void validMail(dynamic input) {
+    if (input == null || input.toString().isEmpty) {
       setState(() {
-        errorMsg = "invalid number";
+        errorMsg = "Input cannot be empty";
       });
-    } else if (mail.length == 10) {
-      setState(() {
-        errorMsg = "valid  number";
-      });
-    } else if (!mail.contains("@") && !mail.contains(".")) {
-      setState(() {
-        errorMsg = "invalid mail";
-      });
+      return;
+    }
+
+    // Check if input is a number
+    if (int.tryParse(input) != null) {
+      // Validate number length
+      if (input.length != 10) {
+        setState(() {
+          errorMsg = "Invalid number. It should be exactly 10 digits.";
+        });
+      } else {
+        setState(() {
+          errorMsg = "";
+        });
+      }
     } else {
-      setState(() {
-        errorMsg = "";
-      });
+      // Validate email format
+      final emailRegex = RegExp(
+        r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+      );
+      if (!emailRegex.hasMatch(input)) {
+        setState(() {
+          errorMsg = "Invalid email format";
+        });
+      } else {
+        setState(() {
+          errorMsg = "";
+        });
+      }
     }
   }
 
@@ -49,11 +67,40 @@ class _CompanyLoginState extends State<CompanyLogin> {
     String t = Provider.of<CompanyDataModel>(context, listen: false)
         .login(_mailController.text, _passwordController.text);
 
-    showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: Text(t),
-            ));
+    if (t != "") {
+      setState(() {
+        Provider.of<CompanyDataModel>(context, listen: false).loginUpdate(true);
+        Provider.of<CompanyDataModel>(context, listen: false).updateLoginId(t);
+      });
+      // print(Provider.of<CompanyDataModel>(context, listen: false).loginStatus);
+      // print(Provider.of<CompanyDataModel>(context, listen: false).loginId);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Login Success"),
+        ),
+      );
+
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const ProfilePage()));
+    } else {
+      showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+                title: Text("Login failed"),
+              ));
+    }
+  }
+
+  bool loginState = false;
+
+  @override
+  void initState() {
+    setState(() {
+      loginState=Provider.of<CompanyDataModel>(context, listen: false).loginStatus;
+    });
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -186,15 +233,6 @@ class _CompanyLoginState extends State<CompanyLogin> {
                     ),
                   ),
                 ],
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text(" Create New Account"),
               ),
             ],
           ),
