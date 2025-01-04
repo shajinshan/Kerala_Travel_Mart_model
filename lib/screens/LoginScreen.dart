@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kerala_travel_mart/screens/MenuScreen.dart';
+import 'package:kerala_travel_mart/screens/company/company_login.dart';
 import 'package:kerala_travel_mart/screens/company/company_register.dart';
+import 'package:kerala_travel_mart/splashScreen/splash_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -84,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const CompanyRegister()));
+                                        const CompanyLogin()));
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor:
@@ -92,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(6))),
                           child: const Text(
-                            "Comapany Register",
+                            "Comapany Login",
                             style: TextStyle(
                                 color: Color.fromARGB(255, 255, 255, 255),
                                 fontSize: 18),
@@ -103,7 +105,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 50,
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const SplashScreen()));
+                          },
                           style: ElevatedButton.styleFrom(
                               backgroundColor:
                                   const Color.fromARGB(255, 52, 175, 48),
