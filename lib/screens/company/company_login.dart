@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kerala_travel_mart/data/models/company_data_model.dart';
-import 'package:kerala_travel_mart/pages/profile_page.dart';
 import 'package:kerala_travel_mart/provider/login_data_provider.dart';
 import 'package:kerala_travel_mart/screens/MenuScreen.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:provider/provider.dart';
 
 class CompanyLogin extends StatefulWidget {
@@ -79,6 +79,7 @@ class _CompanyLoginState extends State<CompanyLogin> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
+          backgroundColor: Colors.green,
           content: Text("Login Success"),
         ),
       );
@@ -86,12 +87,28 @@ class _CompanyLoginState extends State<CompanyLogin> {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const MenuScreen()));
     } else {
-      showDialog(
-          context: context,
-          builder: (context) => const AlertDialog(
-                title: Text("Login failed"),
-              ));
+      showModernDialog(
+          context,
+          "Login Failed",
+          "Please Check Entered mail or Phone and Password are Correct",
+          "Retry",
+          () {},
+          PanaraDialogType.error);
     }
+  }
+
+  void showModernDialog(BuildContext context, String title, String message,
+      String buttonText, Function() onTapDismiss, PanaraDialogType type) {
+    PanaraInfoDialog.show(
+      context,
+      title: title,
+      message: message,
+      buttonText: buttonText,
+      onTapDismiss: () {
+        Navigator.pop(context);
+      },
+      panaraDialogType: type,
+    );
   }
 
   @override

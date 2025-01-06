@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kerala_travel_mart/data/models/company.dart';
 import 'package:provider/provider.dart';
 
 import '../data/models/company_data_model.dart';

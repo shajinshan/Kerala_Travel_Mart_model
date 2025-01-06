@@ -190,8 +190,8 @@ class _MenuScreenState extends State<MenuScreen> {
                             gradient: const LinearGradient(
                                 begin: Alignment.topCenter,
                                 colors: [
-                                  Color.fromARGB(255, 90, 34, 34),
-                                  Color.fromARGB(255, 114, 34, 28),
+                                  Color.fromARGB(255, 97, 33, 7),
+                                  Color.fromARGB(255, 146, 57, 20),
                                 ]),
                             borderRadius: BorderRadius.circular(20),
                             // boxShadow: [
@@ -206,10 +206,14 @@ class _MenuScreenState extends State<MenuScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                  height: 50, child: Image.asset(iconPath)),
+                                  height:
+                                      MediaQuery.of(context).size.height / 17,
+                                  child: Image.asset(iconPath)),
                               Text(
                                 key,
                                 style: const TextStyle(
+                                  fontSize: 15,
+                                  overflow: TextOverflow.ellipsis,
                                   fontWeight: FontWeight.w500,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                 ),

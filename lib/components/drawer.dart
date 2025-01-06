@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kerala_travel_mart/screens/company/company_login.dart';
 import 'package:provider/provider.dart';
+import 'package:toastification/toastification.dart';
 
 import '../data/models/company_data_model.dart';
 
@@ -189,6 +190,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                         listen: false)
                                     .loginUpdate(false);
                               });
+                              showToast(
+                                  context,
+                                  "Logout",
+                                  "Your Account Was Logout Successfully",
+                                  ToastificationType.success);
                               Navigator.pop(context);
                             },
                             leading: const Icon(
@@ -208,6 +214,37 @@ class _CustomDrawerState extends State<CustomDrawer> {
           ),
         ],
       ),
+    );
+  }
+
+  //logout msg alert
+  void showToast(BuildContext context, String title, String description,
+      ToastificationType type) {
+    toastification.show(
+      context: context,
+      type: type,
+      title: Text(title),
+      description: Text(description),
+      primaryColor: Colors.white,
+      autoCloseDuration: const Duration(seconds: 3),
+      progressBarTheme: ProgressIndicatorThemeData(
+        color: type == ToastificationType.success
+            ? Colors.green
+            : type == ToastificationType.info
+                ? Colors.blue
+                : type == ToastificationType.warning
+                    ? Colors.orange
+                    : Colors.red,
+      ),
+      showProgressBar: true,
+      backgroundColor: type == ToastificationType.success
+          ? const Color.fromARGB(255, 166, 12, 12)
+          : type == ToastificationType.info
+              ? Colors.blue
+              : type == ToastificationType.warning
+                  ? Colors.orange
+                  : Colors.red,
+      foregroundColor: Colors.white,
     );
   }
 }

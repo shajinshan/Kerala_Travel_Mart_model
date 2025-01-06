@@ -25,7 +25,7 @@ class CompanyDataModel extends ChangeNotifier {
         phone: "9876543210",
         websiteUrl: "https://www.techinnovators.com/",
         city: "Kochi",
-        state: "Kerala",
+        state: "tamilnadu",
         pin: "682310",
         country: "India",
         password: "password123"),
@@ -76,8 +76,8 @@ class CompanyDataModel extends ChangeNotifier {
         email: "contact@dynamiccorp.com",
         phone: "8887776665",
         websiteUrl: "https://www.dynamiccorp.com/",
-        city: "Kottayam",
-        state: "Kerala",
+        city: "koyambator",
+        state: "Tamilnadu",
         pin: "686001",
         country: "India",
         password: "dynamic456"),
@@ -198,9 +198,20 @@ class CompanyDataModel extends ChangeNotifier {
     }
   }
 
+  //filter base location
+  List<Company> filterByLocation(String key) {
+    if (key.isEmpty) {
+      return allCompanyProfile;
+    } else {
+      return allCompanyProfile
+          .where((company) =>
+              company.state.toLowerCase().contains(key.toLowerCase()))
+          .toList();
+    }
+  }
+
   //get Single Company data
   Company? getCompanyData(String id) {
-    Company company;
     for (Company c in allCompanyProfile) {
       if (id == c.id) {
         return c;
