@@ -28,11 +28,10 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
 
   @override
   Widget build(BuildContext context) {
-
     List<Company> filteredData =
-        Provider.of<CompanyDataModel>(context, listen: false).searchComapany(searchQuery);
+        Provider.of<CompanyDataModel>(context, listen: false)
+            .searchComapany(searchQuery);
 
-        
     return Scaffold(
       floatingActionButton: IconButton(
         onPressed: () {
@@ -40,7 +39,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
         },
         icon: Icon(Icons.refresh),
       ),
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(),
       body: Consumer<CompanyDataModel>(
         builder: (context, companyDataModel, child) {
           return Column(
@@ -51,7 +50,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
+                    // color: Colors.white,
                   ),
                   width: double.infinity,
                   child: Column(
@@ -87,7 +86,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                           ? Container(
                               height: 60,
                               width: double.infinity,
-                              color: Colors.white,
+                              // color: Colors.white,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -97,7 +96,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                                     width: 200,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: Color.fromARGB(255, 234, 233, 231),
+                                      // color: Color.fromARGB(255, 157, 118, 42),
                                     ),
                                     child: DropdownButton(
                                       items: const [
@@ -126,7 +125,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                                   Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: Color.fromARGB(255, 234, 233, 231),
+                                      // color: Color.fromARGB(255, 234, 233, 231),
                                     ),
                                     child: DropdownButton(
                                       items: const [
@@ -171,7 +170,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                       },
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: const Color.fromARGB(255, 223, 233, 238),
+                        // fillColor: const Color.fromARGB(255, 223, 233, 238),
                         labelText: "Search Exhibitors",
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(
@@ -206,7 +205,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                       });
                     },
                     icon: const Icon(Icons.filter_list),
-                    color: Colors.black54,
+                    // color: Colors.black54,
                   ),
                 ],
               ),

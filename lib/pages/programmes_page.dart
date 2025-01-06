@@ -16,7 +16,7 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(),
 
       //body
       body: Column(
@@ -28,8 +28,9 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
             //
             child: Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color.fromARGB(255, 255, 255, 255)),
+                borderRadius: BorderRadius.circular(10),
+                // color: const Color.fromARGB(255, 255, 255, 255)
+              ),
               width: double.infinity,
               child: Column(
                 children: [
@@ -67,7 +68,7 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
                   Container(
                     height: 60,
                     width: double.infinity,
-                    color: const Color.fromARGB(255, 255, 255, 255),
+                    // color: const Color.fromARGB(255, 255, 255, 255),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -75,8 +76,9 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
                         Container(
                           width: 200,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: const Color.fromARGB(255, 234, 233, 231)),
+                            borderRadius: BorderRadius.circular(20),
+                            // color: const Color.fromARGB(255, 234, 233, 231)
+                          ),
                           child: DropdownButton(
                             items: const [
                               DropdownMenuItem(
@@ -105,8 +107,10 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
                         //another dropdown button
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: const Color.fromARGB(255, 234, 233, 231)),
+                            borderRadius: BorderRadius.circular(20),
+                            // color:  Color.fromARGB(255, 234, 233, 231)
+                            //
+                          ),
                           child: DropdownButton(
                             items: const [
                               DropdownMenuItem(

@@ -160,16 +160,16 @@ class CompanyDataModel extends ChangeNotifier {
     return allCompanyProfile;
   }
 
-  //login
-  String login(String user, String password) {
-    for (var company in allCompanyProfile) {
-      if ((user == company.email || user == company.phone) &&
-          password == company.password) {
-        return company.id;
-      }
-    }
-    return "";
-  }
+  // //login
+  // String login(String user, String password) {
+  //   for (var company in allCompanyProfile) {
+  //     if ((user == company.email || user == company.phone) &&
+  //         password == company.password) {
+  //       return company.id;
+  //     }
+  //   }
+  //   return "";
+  // }
 
 //refresh
   Future<void> fetchCompanies() async {
