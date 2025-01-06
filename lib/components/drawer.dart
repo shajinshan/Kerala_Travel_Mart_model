@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kerala_travel_mart/screens/company/company_login.dart';
+import 'package:provider/provider.dart';
+
+import '../data/models/company_data_model.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -9,6 +12,18 @@ class CustomDrawer extends StatefulWidget {
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
+  bool loginState = false;
+
+  @override
+  void initState() {
+    setState(() {
+      loginState =
+          Provider.of<CompanyDataModel>(context, listen: false).loginStatus;
+    });
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -18,8 +33,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
             children: [
               DrawerHeader(
                 decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                ),
+                    // color: Color.fromARGB(255, 255, 255, 255),
+                    ),
                 margin: EdgeInsets.zero, // Removes extra margin
                 padding: EdgeInsets.zero, // Removes extra padding
                 child: Image.asset("assets/icons/logo.png"),
@@ -141,27 +156,51 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     padding: EdgeInsets.only(right: 30, left: 20),
                     child: Divider(),
                   ),
-                  //Logout
+                  //Login
                   Padding(
                     padding: const EdgeInsets.only(left: 50),
-                    child: ListTile(
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const CompanyLogin()));
-                      },
-                      leading: const Icon(
-                        Icons.login,
-                        color: Colors.white,
-                      ),
-                      title: const Text("Log in",
-                          style: TextStyle(
+                    child: !loginState
+                        ? ListTile(
+                            onTap: () {
+                              Navigator.pop(context);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CompanyLogin()));
+                            },
+                            leading: const Icon(
+                              Icons.login,
                               color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w400)),
-                    ),
+                            ),
+                            title: const Text("Log in",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400)),
+                          )
+                        :
+
+                        //logout
+                        ListTile(
+                            onTap: () {
+                              setState(() {
+                                Provider.of<CompanyDataModel>(context,
+                                        listen: false)
+                                    .loginUpdate(false);
+                              });
+                              Navigator.pop(context);
+                            },
+                            leading: const Icon(
+                              Icons.logout,
+                              color: Colors.white,
+                            ),
+                            title: const Text("Log out",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400)),
+                          ),
                   ),
                 ],
               ),

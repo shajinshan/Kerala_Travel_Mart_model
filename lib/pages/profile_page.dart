@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kerala_travel_mart/data/models/company.dart';
-import 'package:kerala_travel_mart/screens/LoginScreen.dart';
 import 'package:kerala_travel_mart/screens/company/company_login.dart';
 import 'package:provider/provider.dart';
 
@@ -36,60 +35,53 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     //if login
-    Widget login = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: SizedBox(
-            height: 200,
-            width: 200,
-            child: Image.network(
-              "https://media.istockphoto.com/id/184962061/photo/business-towers.jpg?s=1024x1024&w=is&k=20&c=k00r5Qd3hZF0TpH1mQBJn3-x08DjIgEqsY-8vQma1WM=",
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          comapany!.companyName,
-          style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          "Register Number :${comapany!.registerNumber}",
-          style: const TextStyle(fontSize: 17),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          "email : ${comapany!.email}",
-          style: const TextStyle(fontSize: 17),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          "city : ${comapany!.city}",
-          style: const TextStyle(fontSize: 17),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          "Website : ${comapany!.websiteUrl}",
-          style: const TextStyle(fontSize: 17, color: Colors.blue),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-      ],
-    );
+    Widget login = comapany == null
+        ? const Center(
+            child: CircularProgressIndicator()) // Show loading spinner
+        : Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: Image.network(
+                    "https://media.istockphoto.com/id/184962061/photo/business-towers.jpg?s=1024x1024&w=is&k=20&c=k00r5Qd3hZF0TpH1mQBJn3-x08DjIgEqsY-8vQma1WM=",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                comapany!.companyName,
+                style:
+                    const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Register Number :${comapany!.registerNumber}",
+                style: const TextStyle(fontSize: 17),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Email : ${comapany!.email}",
+                style: const TextStyle(fontSize: 17),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "City : ${comapany!.city}",
+                style: const TextStyle(fontSize: 17),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Website : ${comapany!.websiteUrl}",
+                style: const TextStyle(fontSize: 17, color: Colors.blue),
+              ),
+              const SizedBox(height: 10),
+            ],
+          );
+
     //if not login
     Widget notLogin = Center(
       child: Column(
@@ -102,16 +94,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   backgroundColor: const Color.fromARGB(255, 27, 204, 50)),
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (contex) => const CompanyLogin()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (contex) => const CompanyLogin(),
+                  ),
+                );
               },
               child: const Text("Log in"))
         ],
       ),
     );
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar:  CustomAppBar(),
 
       //body
       body: Column(
@@ -130,7 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   //title container
                   Container(
-                    height: 100,
+                    height: 60,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -158,7 +152,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             textAlign: TextAlign.start,
                             "Profile",
                             style: GoogleFonts.sarabun(
-                                fontSize: 30,
+                                fontSize: 25,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           ),

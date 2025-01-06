@@ -14,7 +14,7 @@ class _FloorPlanPageState extends State<FloorPlanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar:  CustomAppBar(),
 
       //body
       body: Column(

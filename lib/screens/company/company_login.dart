@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kerala_travel_mart/data/models/company_data_model.dart';
 import 'package:kerala_travel_mart/pages/profile_page.dart';
+import 'package:kerala_travel_mart/provider/login_data_provider.dart';
+import 'package:kerala_travel_mart/screens/MenuScreen.dart';
 import 'package:provider/provider.dart';
 
 class CompanyLogin extends StatefulWidget {
@@ -64,8 +66,8 @@ class _CompanyLoginState extends State<CompanyLogin> {
 
 //login company
   void loginCompany() {
-    String t = Provider.of<CompanyDataModel>(context, listen: false)
-        .login(_mailController.text, _passwordController.text);
+    String t = Provider.of<LoginDataProvider>(context, listen: false)
+        .login(context, _mailController.text, _passwordController.text);
 
     if (t != "") {
       setState(() {
@@ -81,8 +83,8 @@ class _CompanyLoginState extends State<CompanyLogin> {
         ),
       );
 
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => const ProfilePage()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const MenuScreen()));
     } else {
       showDialog(
           context: context,
@@ -92,21 +94,10 @@ class _CompanyLoginState extends State<CompanyLogin> {
     }
   }
 
-  bool loginState = false;
-
-  @override
-  void initState() {
-    setState(() {
-      loginState=Provider.of<CompanyDataModel>(context, listen: false).loginStatus;
-    });
-    // TODO: implement initState
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 241, 240, 240),
+      // backgroundColor: const Color.fromARGB(255, 241, 240, 240),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -128,7 +119,7 @@ class _CompanyLoginState extends State<CompanyLogin> {
                   controller: _mailController,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: const Color.fromARGB(255, 223, 233, 238),
+                    // fillColor: const Color.fromARGB(255, 223, 233, 238),
                     labelText: "E-mail or Number",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -173,7 +164,7 @@ class _CompanyLoginState extends State<CompanyLogin> {
                             ? const Icon(Icons.remove_red_eye_outlined)
                             : const Icon(Icons.remove_red_eye)),
                     filled: true,
-                    fillColor: const Color.fromARGB(255, 223, 233, 238),
+                    // fillColor: const Color.fromARGB(255, 223, 233, 238),
                     labelText: "Password",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),

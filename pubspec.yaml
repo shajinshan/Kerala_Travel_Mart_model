@@ -41,6 +41,7 @@ dependencies:
   provider:
   lottie: ^3.3.0
   url_launcher: ^6.3.1
+  image_picker: ^1.1.2
   
 
 dev_dependencies:
@@ -72,6 +73,7 @@ flutter:
     - assets/menuIcons/
     - assets/icons/
     - assets/images/company/
+   
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

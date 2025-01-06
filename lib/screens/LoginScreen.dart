@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 280,
               width: double.infinity,
               decoration: const BoxDecoration(
-                  color: const Color.fromARGB(255, 255, 255, 255),
+                  color: Color.fromARGB(0, 255, 255, 255),
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(100),
                       bottomRight: Radius.circular(100))),
@@ -166,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text(
                         "Powered By :",
-                        style: TextStyle(fontWeight: FontWeight.w300),
+                        style: TextStyle(),
                       )
                     ],
                   ),

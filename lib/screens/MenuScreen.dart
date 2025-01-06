@@ -52,10 +52,10 @@ class _MenuScreenState extends State<MenuScreen> {
             duration: Duration(milliseconds: 500), curve: Curves.bounceInOut);
       } else {
         _pageController.nextPage(
-            duration:const Duration(milliseconds: 500), curve: Curves.easeInOut);
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut);
       }
-    }
-    );
+    });
   }
 
   @override
@@ -112,8 +112,8 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 245, 242, 242),
-      appBar: const CustomAppBar(),
+      // backgroundColor: const Color.fromARGB(255, 245, 242, 242),
+      appBar: CustomAppBar(),
 
       //drawer
       drawer: const CustomDrawer(),
@@ -153,14 +153,14 @@ class _MenuScreenState extends State<MenuScreen> {
                         child: InkWell(
                           onTap: () {
                             _pageController.animateToPage(index,
-                                duration: Duration(milliseconds: 300),
+                                duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeIn);
                           },
                           child: CircleAvatar(
                             radius: _activepage == index ? 8 : 6,
                             backgroundColor: _activepage == index
-                                ? Colors.black
-                                : const Color.fromARGB(255, 143, 143, 143),
+                                ? const Color.fromARGB(255, 164, 163, 163)
+                                : const Color.fromARGB(255, 214, 214, 214),
                           ),
                         ),
                       )),
@@ -190,8 +190,8 @@ class _MenuScreenState extends State<MenuScreen> {
                             gradient: const LinearGradient(
                                 begin: Alignment.topCenter,
                                 colors: [
-                                  Color.fromARGB(255, 62, 17, 17),
-                                  Color.fromARGB(255, 90, 26, 22),
+                                  Color.fromARGB(255, 90, 34, 34),
+                                  Color.fromARGB(255, 114, 34, 28),
                                 ]),
                             borderRadius: BorderRadius.circular(20),
                             // boxShadow: [
