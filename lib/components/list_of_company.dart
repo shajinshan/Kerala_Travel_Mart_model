@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kerala_travel_mart/data/models/company.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ListOfCompany extends StatefulWidget {

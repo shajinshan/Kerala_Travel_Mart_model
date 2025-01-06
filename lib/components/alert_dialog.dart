@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 
 import '../screens/MenuScreen.dart';
 
+// ignore: must_be_immutable
 class CustomDialog extends StatelessWidget {
   final String content;
   final IconData icons;
@@ -17,7 +18,7 @@ class CustomDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding:const EdgeInsets.all(10),
         decoration: BoxDecoration(
             color: const Color.fromARGB(255, 194, 193, 192),
             borderRadius: BorderRadius.circular(16)),
@@ -36,14 +37,14 @@ class CustomDialog extends StatelessWidget {
 
             //   size: 30,
             // ),
-            SizedBox(
+          const  SizedBox(
               height: 20,
             ),
             Text(
               content,
-              style: TextStyle(fontSize: 22),
+              style:const TextStyle(fontSize: 22),
             ),
-            SizedBox(
+           const SizedBox(
               height: 20,
             ),
             SizedBox(
@@ -64,7 +65,7 @@ class CustomDialog extends StatelessWidget {
 
                    
                   },
-                  child: Text("ok")),
+                  child:const Text("ok")),
             )
           ],
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kerala_travel_mart/components/modern_dialog.dart';
 import 'package:kerala_travel_mart/screens/MenuScreen.dart';
 import 'package:kerala_travel_mart/screens/company/company_login.dart';
-import 'package:kerala_travel_mart/screens/company/company_register.dart';
 import 'package:kerala_travel_mart/splashScreen/splash_screen.dart';
 
 class LoginScreen extends StatefulWidget {

@@ -13,7 +13,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => LoginDataProvider()),
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
-      child: const MyApp(),
+      child:  MyApp(),
     ),
   );
 }
