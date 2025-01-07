@@ -66,6 +66,16 @@ class _CompanyLoginState extends State<CompanyLogin> {
 
 //login company
   void loginCompany() {
+    if (_mailController.text.isEmpty || _passwordController.text.isEmpty) {
+      showModernDialog(
+          context,
+          "Field cannot be Empty",
+          "Please Entered mail or Phone and Password are Correct",
+          "Retry",
+          () {},
+          PanaraDialogType.error);
+      return;
+    }
     String t = Provider.of<LoginDataProvider>(context, listen: false)
         .login(context, _mailController.text, _passwordController.text);
 

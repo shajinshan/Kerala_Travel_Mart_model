@@ -4,6 +4,7 @@ import 'package:kerala_travel_mart/components/app_bar.dart';
 import 'package:kerala_travel_mart/components/list_of_company.dart';
 import 'package:kerala_travel_mart/data/models/company.dart';
 import 'package:kerala_travel_mart/data/models/company_data_model.dart';
+import 'package:kerala_travel_mart/pages/exhibitor/exhibitors_detail_screen.dart';
 import 'package:provider/provider.dart';
 
 class ExhibitorsPage extends StatefulWidget {
@@ -20,18 +21,15 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
   bool filterBtn = false;
 
   void refresh() {
-        Provider.of<CompanyDataModel>(context, listen: false).fetchCompanies();
+    Provider.of<CompanyDataModel>(context, listen: false).fetchCompanies();
     print("Data refreshed");
   }
 
-
   @override
   Widget build(BuildContext context) {
-  
-        List<Company> filteredData = Provider.of<CompanyDataModel>(context, listen: false)
-          .searchComapany(searchQuery);
-
-
+    List<Company> filteredData =
+        Provider.of<CompanyDataModel>(context, listen: false)
+            .searchComapany(searchQuery);
 
     return Scaffold(
       floatingActionButton: IconButton(
@@ -100,7 +98,6 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                                       // color: Color.fromARGB(255, 157, 118, 42),
                                     ),
                                     child: DropdownButton(
-                                  
                                       items: const [
                                         DropdownMenuItem(
                                           value: 'tamilnadu',
@@ -115,13 +112,10 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                                           child: Text('Option 3'),
                                         ),
                                       ],
-                                      onChanged: (value) {
-                                       
-                                      },
-                                      hint:const Padding(
-                                        padding:  EdgeInsets.all(8.0),
-                                        child: Text(
-                                             "select location"),
+                                      onChanged: (value) {},
+                                      hint: const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Text("select location"),
                                       ),
                                     ),
                                   ),
@@ -221,7 +215,17 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                   itemCount: filteredData.length,
                   itemBuilder: (context, index) {
                     Company company = filteredData[index];
-                    return ListOfCompany(company: company);
+                    return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ExhibitorsDetailScreen(
+                                        company: filteredData[index],
+                                      )));
+                          print(filteredData[index].companyName);
+                        },
+                        child: ListOfCompany(company: company));
                   },
                 ),
               ),
@@ -232,4 +236,3 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
     );
   }
 }
-

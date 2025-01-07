@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kerala_travel_mart/components/modern_dialog.dart';
 import 'package:kerala_travel_mart/screens/MenuScreen.dart';
 import 'package:kerala_travel_mart/screens/company/company_login.dart';
 import 'package:kerala_travel_mart/splashScreen/splash_screen.dart';
@@ -190,8 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   builder: (context) => MenuScreen()));
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 123, 20, 20),
+                            backgroundColor: const Color(0xFF2B6A77),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(6))),
                         child: const Row(

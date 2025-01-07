@@ -48,8 +48,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
             child: Container(
               decoration: const BoxDecoration(
                   gradient: LinearGradient(colors: [
-                Color.fromARGB(255, 89, 30, 30),
-                Color.fromARGB(255, 126, 25, 25),
+                 Color(0xFF2B6A77),
+                 Color(0xFF2B6A77),
               ])),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
