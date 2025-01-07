@@ -14,10 +14,11 @@ class Company {
   String pin;
   String country;
   String password;
+  String highlights;
 
   Company(
       {required this.id,
-        required this.companyName,
+      required this.companyName,
       required this.registerNumber,
       required this.date,
       required this.email,
@@ -27,5 +28,6 @@ class Company {
       required this.state,
       required this.pin,
       required this.country,
-      required this.password});
+      required this.password,
+      required this.highlights});
 }

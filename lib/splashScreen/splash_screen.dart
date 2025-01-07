@@ -10,15 +10,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    // Navigate to the Home Screen after 3 seconds
-    Future.delayed(const Duration(seconds: 1), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const LoginScreen()),
-      );
-    });
-  }
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(

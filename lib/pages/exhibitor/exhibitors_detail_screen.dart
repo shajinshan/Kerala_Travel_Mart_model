@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kerala_travel_mart/data/models/company.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../components/app_bar.dart';
 import '../../data/models/company_data_model.dart';
@@ -155,24 +156,21 @@ class _ExhibitorsDetailScreenState extends State<ExhibitorsDetailScreen> {
                   height: 10,
                 ),
                 //container for detail
-_selectedIndex==0 ?
-Container(
-                  height: 400,
-                  width: double.infinity,
-                  color:  Colors.red,
-                  
-                ):
-                Container(
-                  height: 400,
-                  width: double.infinity,
-                  color: const Color.fromARGB(0, 212, 211, 212),
-                  child: ExhibitorsContact(
-                    company: widget.company,
-                  ),
-                )
-  
-                 
-                
+                _selectedIndex == 0
+                    ? SizedBox(
+                        height: 400,
+                        width: double.infinity,
+                        child: ExhibitorProfile(
+                          company: widget.company,
+                        ),
+                      )
+                    : SizedBox(
+                        height: 400,
+                        width: double.infinity,
+                        child: ExhibitorsContact(
+                          company: widget.company,
+                        ),
+                      )
               ]),
             ),
           ),
@@ -182,6 +180,63 @@ Container(
   }
 }
 
+//profile class
+class ExhibitorProfile extends StatelessWidget {
+  Company company;
+  ExhibitorProfile({super.key, required this.company});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, left: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Highlights",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Text(company.highlights),
+          ),
+          //website button
+          Center(
+            child: GestureDetector(
+              onTap: () async {
+                final Uri url = Uri.parse(company.websiteUrl);
+
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        content: Text('Could not open ${company.websiteUrl}')),
+                  );
+                }
+              },
+              child: Container(
+                height: 40,
+                width: 200,
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Center(
+                    child: Text(
+                  "Website",
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                )),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+//contact class
+// ignore: must_be_immutable
 class ExhibitorsContact extends StatelessWidget {
   Company company;
   ExhibitorsContact({super.key, required this.company});
