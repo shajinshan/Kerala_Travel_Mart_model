@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerala_travel_mart/provider/login_data_provider.dart';
 import 'package:kerala_travel_mart/screens/company/company_login.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
@@ -48,8 +49,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
             child: Container(
               decoration: const BoxDecoration(
                   gradient: LinearGradient(colors: [
-                 Color(0xFF2B6A77),
-                 Color(0xFF2B6A77),
+                Color(0xFF2B6A77),
+                Color(0xFF2B6A77),
               ])),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -185,6 +186,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         //logout
                         ListTile(
                             onTap: () {
+                              Provider.of<LoginDataProvider>(context,
+                                      listen: false)
+                                  .logout();
                               setState(() {
                                 Provider.of<CompanyDataModel>(context,
                                         listen: false)

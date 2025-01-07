@@ -15,7 +15,8 @@ class CompanyDataModel extends ChangeNotifier {
         state: "Kerala",
         pin: "682304",
         country: "India",
-        password: "1234"),
+        password: "1234",
+        highlights: 'hiihhoiopnopjihh'),
     Company(
         id: "002",
         companyName: "Tech Innovators",
@@ -28,7 +29,8 @@ class CompanyDataModel extends ChangeNotifier {
         state: "tamilnadu",
         pin: "682310",
         country: "India",
-        password: "password123"),
+        password: "password123",
+        highlights: 'hiihhoiopnopjihh'),
     Company(
         id: "003",
         companyName: "Bright Solutions",
@@ -41,7 +43,8 @@ class CompanyDataModel extends ChangeNotifier {
         state: "Kerala",
         pin: "680001",
         country: "India",
-        password: "admin123"),
+        password: "admin123",
+        highlights: 'hiihhoiopnopjihh'),
     Company(
         id: "004",
         companyName: "Global Tech",
@@ -54,7 +57,8 @@ class CompanyDataModel extends ChangeNotifier {
         state: "Kerala",
         pin: "695014",
         country: "India",
-        password: "global2021"),
+        password: "global2021",
+        highlights: 'hiihhoiopnopjihh'),
     Company(
         id: "005",
         companyName: "Smart Systems",
@@ -67,7 +71,8 @@ class CompanyDataModel extends ChangeNotifier {
         state: "Kerala",
         pin: "670001",
         country: "India",
-        password: "smart2023"),
+        password: "smart2023",
+        highlights: 'hiihhoiopnopjihh'),
     Company(
         id: "006",
         companyName: "Dynamic Corp",
@@ -80,7 +85,8 @@ class CompanyDataModel extends ChangeNotifier {
         state: "Tamilnadu",
         pin: "686001",
         country: "India",
-        password: "dynamic456"),
+        password: "dynamic456",
+        highlights: 'hiihhoiopnopjihh'),
     Company(
         id: "007",
         companyName: "Infinity IT",
@@ -93,7 +99,8 @@ class CompanyDataModel extends ChangeNotifier {
         state: "Kerala",
         pin: "688001",
         country: "India",
-        password: "infinity987"),
+        password: "infinity987",
+        highlights: 'hiihhoiopnopjihh'),
     Company(
         id: "008",
         companyName: "NextGen Solutions",
@@ -106,7 +113,8 @@ class CompanyDataModel extends ChangeNotifier {
         state: "Kerala",
         pin: "678001",
         country: "India",
-        password: "nextgen234"),
+        password: "nextgen234",
+        highlights: 'hiihhoiopnopjihh'),
     Company(
         id: "009",
         companyName: "Prime Technologies",
@@ -119,7 +127,8 @@ class CompanyDataModel extends ChangeNotifier {
         state: "Kerala",
         pin: "691001",
         country: "India",
-        password: "prime2022"),
+        password: "prime2022",
+        highlights: 'hiihhoiopnopjihh'),
     Company(
         id: "010",
         companyName: "Pioneer Tech",
@@ -132,7 +141,8 @@ class CompanyDataModel extends ChangeNotifier {
         state: "Kerala",
         pin: "676001",
         country: "India",
-        password: "12"),
+        password: "12",
+        highlights: 'hiihhoiopnopjihh'),
   ];
 
   bool loginStatus = false;
