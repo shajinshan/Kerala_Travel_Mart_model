@@ -9,23 +9,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
-  Future<void> _openCamera(BuildContext context) async {
-    final ImagePicker picker = ImagePicker();
-    try {
-      final XFile? image = await picker.pickImage(source: ImageSource.camera);
-      if (image != null) {
-        // Handle the captured image
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Image captured: ${image.path}')),
-        );
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to open camera: $e')),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -68,14 +51,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               //click this open camera on ondroid and ios how
             },
             child: Container(
-              height: 50,
-              width: 50,
+              height: 40,
+              width: 40,
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
                     colors: [Color(0xFF1E3E62), Color(0xFF1E3E62)]),
                 borderRadius: BorderRadius.circular(50),
               ),
               child: const Icon(
+                size: 20,
                 Icons.qr_code,
                 color: Colors.white,
               ),
@@ -84,5 +68,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
     );
+  }
+
+//image
+  Future<void> _openCamera(BuildContext context) async {
+    final ImagePicker picker = ImagePicker();
+    try {
+      final XFile? image = await picker.pickImage(source: ImageSource.camera);
+      if (image != null) {
+        // Handle the captured image
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Image captured: ${image.path}')),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to open camera: $e')),
+      );
+    }
   }
 }

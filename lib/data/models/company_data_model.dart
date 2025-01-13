@@ -16,7 +16,8 @@ class CompanyDataModel extends ChangeNotifier {
         pin: "682304",
         country: "India",
         password: "1234",
-        highlights: 'hiihhoiopnopjihh'),
+        highlights:
+            'We are a mix of strategists, creative directors, designers, writers, media strategists, digital marketers, developers and relationship builders. We’re committed to creating vibrant and relevant brand experiences on every level.'),
     Company(
         id: "002",
         companyName: "Tech Innovators",
@@ -53,7 +54,7 @@ class CompanyDataModel extends ChangeNotifier {
         email: "info@globaltech.com",
         phone: "9801234567",
         websiteUrl: "https://www.globaltech.com/",
-        city: "Thiruvananthapuram",
+        city: "kollam",
         state: "Kerala",
         pin: "695014",
         country: "India",

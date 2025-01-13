@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kerala_travel_mart/screens/LoginScreen.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
