@@ -38,48 +38,56 @@ class _ProfilePageState extends State<ProfilePage> {
     Widget login = comapany == null
         ? const Center(
             child: CircularProgressIndicator()) // Show loading spinner
-        : Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: Image.network(
-                    "https://media.istockphoto.com/id/184962061/photo/business-towers.jpg?s=1024x1024&w=is&k=20&c=k00r5Qd3hZF0TpH1mQBJn3-x08DjIgEqsY-8vQma1WM=",
-                    fit: BoxFit.cover,
+        : Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                      bottom: 10, left: MediaQuery.of(context).size.width / 5),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: SizedBox(
+                      height: 200,
+                      width: 200,
+                      child: Image.network(
+              
+                        "https://media.istockphoto.com/id/184962061/photo/business-towers.jpg?s=1024x1024&w=is&k=20&c=k00r5Qd3hZF0TpH1mQBJn3-x08DjIgEqsY-8vQma1WM=",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                comapany!.companyName,
-                style:
-                    const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "Register Number :${comapany!.registerNumber}",
-                style: const TextStyle(fontSize: 17),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "Email : ${comapany!.email}",
-                style: const TextStyle(fontSize: 17),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "City : ${comapany!.city}",
-                style: const TextStyle(fontSize: 17),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "Website : ${comapany!.websiteUrl}",
-                style: const TextStyle(fontSize: 17, color: Colors.blue),
-              ),
-              const SizedBox(height: 10),
-            ],
+                const SizedBox(height: 10),
+                Text(
+                  comapany!.companyName,
+                  style: const TextStyle(
+                      fontSize: 17, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "Register Number :${comapany!.registerNumber}",
+                  style: const TextStyle(fontSize: 17),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "Email : ${comapany!.email}",
+                  style: const TextStyle(fontSize: 17),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "City : ${comapany!.city}",
+                  style: const TextStyle(fontSize: 17),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "Website : ${comapany!.websiteUrl}",
+                  style: const TextStyle(fontSize: 17, color: Colors.blue),
+                ),
+                const SizedBox(height: 10),
+              ],
+            ),
           );
 
     //if not login
@@ -105,7 +113,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
     return Scaffold(
-      appBar:  CustomAppBar(),
+      appBar: CustomAppBar(),
 
       //body
       body: Column(
@@ -131,6 +139,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       gradient: const LinearGradient(colors: [
                         Color.fromARGB(255, 89, 30, 30),
                         Color.fromARGB(255, 126, 25, 25),
+                        // Color(0xFF2B6A77), Color(0xFF2B6A77)
                       ]),
                     ),
 

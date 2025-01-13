@@ -27,6 +27,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
 
   @override
   Widget build(BuildContext context) {
+    
     List<Company> filteredData =
         Provider.of<CompanyDataModel>(context, listen: false)
             .searchComapany(searchQuery);
@@ -36,7 +37,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
         onPressed: () {
           refresh(); // Refresh the data when button is clicked
         },
-        icon: Icon(Icons.refresh),
+        icon:const Icon(Icons.refresh),
       ),
       appBar: CustomAppBar(),
       body: Consumer<CompanyDataModel>(
@@ -55,7 +56,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                   child: Column(
                     children: [
                       Container(
-                        height: 100,
+                        height: 70,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -71,7 +72,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                           child: Text(
                             "Exhibitors",
                             style: GoogleFonts.sarabun(
-                              fontSize: 30,
+                              fontSize: 25,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
@@ -219,6 +220,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                   itemBuilder: (context, index) {
                     Company company = filteredData[index];
                     return GestureDetector(
+                        
                         onTap: () {
                           Navigator.push(
                               context,
@@ -228,7 +230,10 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                                       )));
                           print(filteredData[index].companyName);
                         },
-                        child: ListOfCompany(company: company));
+                        child: ListOfCompany(
+                          company: company,
+                        
+                        ));
                   },
                 ),
               ),

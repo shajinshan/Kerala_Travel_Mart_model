@@ -56,14 +56,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   //home
-                  const Padding(
-                    padding: EdgeInsets.only(left: 50),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 50),
                     child: ListTile(
-                      leading: Icon(
+                      onTap: () => Navigator.pop(context),
+                      leading: const Icon(
                         Icons.home,
                         color: Colors.white,
                       ),
-                      title: Text(
+                      title: const Text(
                         "Home",
                         style: TextStyle(
                             color: Colors.white,
@@ -242,7 +243,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
       ),
       showProgressBar: true,
       backgroundColor: type == ToastificationType.success
-          ? const Color.fromARGB(255, 166, 12, 12)
+          ? const Color.fromARGB(255, 48, 128, 132)
           : type == ToastificationType.info
               ? Colors.blue
               : type == ToastificationType.warning

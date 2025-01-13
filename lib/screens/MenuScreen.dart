@@ -6,6 +6,7 @@ import 'package:kerala_travel_mart/pages/exhibitors_page.dart';
 import 'package:kerala_travel_mart/pages/floor_plan_page.dart';
 import 'package:kerala_travel_mart/pages/profile_page.dart';
 import 'package:kerala_travel_mart/pages/programmes_page.dart';
+import 'package:kerala_travel_mart/pages/venue_page.dart';
 
 import '../components/image_placeholder.dart';
 
@@ -59,6 +60,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
   @override
   void initState() {
+    // startTimer();
     _pages = List.generate(
       _images.length,
       (index) => ImagePlaceholders(
@@ -97,6 +99,10 @@ class _MenuScreenState extends State<MenuScreen> {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const ProfilePage()));
         return;
+      case "venue":
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const VenuePage()));
+        return;
 
       default:
         print(data);
@@ -118,7 +124,7 @@ class _MenuScreenState extends State<MenuScreen> {
               decoration: InputDecoration(
                 filled: true,
                 labelText: "Search",
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -169,7 +175,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           curve: Curves.easeIn);
                     },
                     child: CircleAvatar(
-                      radius: _activepage == index ? 8 : 6,
+                      radius: _activepage == index ? 6 : 4,
                       backgroundColor: _activepage == index
                           ? const Color.fromARGB(255, 164, 163, 163)
                           : const Color.fromARGB(255, 214, 214, 214),
@@ -202,7 +208,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
                                 colors: [Color(0xFF2B6A77), Color(0xFF2B6A77)]),
-                            borderRadius: BorderRadius.circular(100),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           child: Icon(
                             iconPath,
@@ -215,7 +221,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           key,
                           style: const TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
                         ),

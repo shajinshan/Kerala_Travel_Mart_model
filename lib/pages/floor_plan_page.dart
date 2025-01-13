@@ -14,7 +14,7 @@ class _FloorPlanPageState extends State<FloorPlanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  CustomAppBar(),
+      appBar: CustomAppBar(),
 
       //body
       body: Column(
@@ -33,7 +33,7 @@ class _FloorPlanPageState extends State<FloorPlanPage> {
                 children: [
                   //title container
                   Container(
-                    height: 100,
+                    height: 70,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -45,12 +45,12 @@ class _FloorPlanPageState extends State<FloorPlanPage> {
 
                     //text
                     child: Padding(
-                      padding: EdgeInsets.only(top: 20, left: 20),
+                      padding:const EdgeInsets.only(top: 20, left: 20),
                       child: Text(
                         textAlign: TextAlign.start,
                         "Floor Plan",
                         style: GoogleFonts.sarabun(
-                            fontSize: 30,
+                            fontSize: 25,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
