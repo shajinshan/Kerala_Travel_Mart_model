@@ -36,7 +36,7 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
                 children: [
                   //title container
                   Container(
-                    height: 100,
+                    height: 70,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -48,12 +48,12 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
 
                     //text
                     child: Padding(
-                      padding: EdgeInsets.only(top: 20, left: 20),
+                      padding:const EdgeInsets.only(top: 20, left: 20),
                       child: Text(
                         textAlign: TextAlign.start,
                         "Programme Schedule",
                         style: GoogleFonts.sarabun(
-                            fontSize: 30,
+                            fontSize: 25,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
@@ -65,7 +65,7 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
                     height: 10,
                   ),
 
-                  Container(
+                  SizedBox(
                     height: 60,
                     width: double.infinity,
                     // color: const Color.fromARGB(255, 255, 255, 255),

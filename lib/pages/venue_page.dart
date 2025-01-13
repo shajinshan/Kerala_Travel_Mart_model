@@ -1,5 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kerala_travel_mart/components/shimmer_loading_widget.dart';
+import 'package:kerala_travel_mart/data/models/venue.dart';
+import 'package:kerala_travel_mart/data/models/venue_data_model.dart';
+import 'package:kerala_travel_mart/pages/venue/venue_list.dart';
+import 'package:provider/provider.dart';
 
 import '../components/app_bar.dart';
 
@@ -10,9 +17,38 @@ class VenuePage extends StatefulWidget {
   State<VenuePage> createState() => _VenuePageState();
 }
 
+Timer? _timer;
+
 class _VenuePageState extends State<VenuePage> {
+  bool isLoading = true;
+  void startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 2), (timer) {
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    startTimer();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _timer = null;
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    //getting data
+    List<Venue> venuesList =
+        Provider.of<VenueDataModel>(context, listen: false).venues;
     return Scaffold(
       appBar: CustomAppBar(),
 
@@ -33,13 +69,13 @@ class _VenuePageState extends State<VenuePage> {
                 children: [
                   //title container
                   Container(
-                    height: 100,
+                    height: 70,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       gradient: const LinearGradient(colors: [
-                        Color.fromARGB(255, 89, 30, 30),
-                        Color.fromARGB(255, 126, 25, 25),
+                        Color.fromARGB(255, 31, 84, 100),
+                        Color.fromARGB(255, 36, 83, 107),
                       ]),
                     ),
 
@@ -50,7 +86,7 @@ class _VenuePageState extends State<VenuePage> {
                         textAlign: TextAlign.start,
                         "Venue Details",
                         style: GoogleFonts.sarabun(
-                            fontSize: 30,
+                            fontSize: 25,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
@@ -64,27 +100,21 @@ class _VenuePageState extends State<VenuePage> {
           ),
 
           // Data loaded here
-          SingleChildScrollView(
+          Expanded(
             child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                //chid widget
-                child: Column(
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height / 6,
-                      width: double.infinity,
-                      color: Colors.amber,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height / 100,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height / 3.2,
-                      width: double.infinity,
-                      color: const Color.fromARGB(255, 166, 165, 163),
-                    )
-                  ],
-                )),
+              padding: const EdgeInsets.all(8.0),
+              //chid widget
+              child: isLoading
+                  ? ShimmerLoading()
+                  : ListView.builder(
+                      itemCount: venuesList.length,  
+                      itemBuilder: (context, index) {
+                        Venue venueDataModel = venuesList[index];
+                        return VenueList(
+                          venue: venueDataModel,
+                        );
+                      }),
+            ),
           ),
         ],
       ),

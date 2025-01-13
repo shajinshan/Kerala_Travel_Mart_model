@@ -21,7 +21,7 @@ class _ListOfCompanyState extends State<ListOfCompany> {
           setState(() {
             saveBtnState = !saveBtnState;
           });
-          print(saveBtnState);
+         
         },
         child: Container(
           decoration: BoxDecoration(

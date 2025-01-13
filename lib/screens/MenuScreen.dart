@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:kerala_travel_mart/components/app_bar.dart';
 import 'package:kerala_travel_mart/components/drawer.dart';
+import 'package:kerala_travel_mart/components/shimmer_loading_widget.dart';
 import 'package:kerala_travel_mart/pages/exhibitors_page.dart';
 import 'package:kerala_travel_mart/pages/floor_plan_page.dart';
 import 'package:kerala_travel_mart/pages/profile_page.dart';
@@ -38,7 +39,7 @@ Map<String, IconData> title = {
   "Quick Help": Icons.help_outline,
   "My Meetings": Icons.meeting_room,
   "Venue": Icons.location_on,
-  "Activities": Icons.sports,
+  "Activities": Icons.calendar_month_sharp,
   "KTM": Icons.people, // KTM could refer to bikes
   "Moments": Icons.photo_album,
 };
@@ -103,6 +104,10 @@ class _MenuScreenState extends State<MenuScreen> {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const VenuePage()));
         return;
+       case "quick help":
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ShimmerLoading()));
+        return;  
 
       default:
         print(data);
