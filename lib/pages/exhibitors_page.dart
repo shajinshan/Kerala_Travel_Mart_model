@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kerala_travel_mart/components/app_bar.dart';
 import 'package:kerala_travel_mart/components/list_of_company.dart';
+import 'package:kerala_travel_mart/components/shimmer_loading_widget.dart';
 import 'package:kerala_travel_mart/data/models/company.dart';
 import 'package:kerala_travel_mart/data/models/company_data_model.dart';
 import 'package:kerala_travel_mart/pages/exhibitor/exhibitors_detail_screen.dart';
+import 'package:kerala_travel_mart/shimmer/profile_shimmer_loading.dart';
 import 'package:provider/provider.dart';
 
 class ExhibitorsPage extends StatefulWidget {
@@ -13,6 +17,8 @@ class ExhibitorsPage extends StatefulWidget {
   @override
   State<ExhibitorsPage> createState() => _ExhibitorsPageState();
 }
+
+Timer? _timer;
 
 class _ExhibitorsPageState extends State<ExhibitorsPage> {
   //search query
@@ -25,9 +31,32 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
     print("Data refreshed");
   }
 
+  bool isLoading = true;
+  void startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 2), (timer) {
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    startTimer();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _timer = null;
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    
     List<Company> filteredData =
         Provider.of<CompanyDataModel>(context, listen: false)
             .searchComapany(searchQuery);
@@ -37,7 +66,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
         onPressed: () {
           refresh(); // Refresh the data when button is clicked
         },
-        icon:const Icon(Icons.refresh),
+        icon: Icon(Icons.refresh),
       ),
       appBar: CustomAppBar(),
       body: Consumer<CompanyDataModel>(
@@ -215,27 +244,28 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
 
               // List of Companies
               Expanded(
-                child: ListView.builder(
-                  itemCount: filteredData.length,
-                  itemBuilder: (context, index) {
-                    Company company = filteredData[index];
-                    return GestureDetector(
-                        
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ExhibitorsDetailScreen(
-                                        company: filteredData[index],
-                                      )));
-                          print(filteredData[index].companyName);
+                child: isLoading
+                    ? const ShimmerLoading()
+                    : ListView.builder(
+                        itemCount: filteredData.length,
+                        itemBuilder: (context, index) {
+                          Company company = filteredData[index];
+                          return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ExhibitorsDetailScreen(
+                                              company: filteredData[index],
+                                            )));
+                                
+                              },
+                              child: ListOfCompany(
+                                company: company,
+                              ));
                         },
-                        child: ListOfCompany(
-                          company: company,
-                        
-                        ));
-                  },
-                ),
+                      ),
               ),
             ],
           );

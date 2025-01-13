@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kerala_travel_mart/data/models/company.dart';
 import 'package:kerala_travel_mart/screens/company/company_login.dart';
+import 'package:kerala_travel_mart/shimmer/profile_shimmer_loading.dart';
 import 'package:provider/provider.dart';
 
 import '../components/app_bar.dart';
@@ -36,8 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     //if login
     Widget login = comapany == null
-        ? const Center(
-            child: CircularProgressIndicator()) // Show loading spinner
+        ? const Center(child: ProfileShimmerLoading()) // Show loading spinner
         : Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -52,7 +52,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 200,
                       width: 200,
                       child: Image.network(
-              
                         "https://media.istockphoto.com/id/184962061/photo/business-towers.jpg?s=1024x1024&w=is&k=20&c=k00r5Qd3hZF0TpH1mQBJn3-x08DjIgEqsY-8vQma1WM=",
                         fit: BoxFit.cover,
                       ),
