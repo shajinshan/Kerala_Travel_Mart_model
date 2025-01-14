@@ -19,6 +19,8 @@ class Venue {
       required this.locationUrl});
 
   String getFormattedDate() {
-    return dateTime.map((date) => DateFormat('d-M-yyyy').format(date)).join(', ');;
+    return dateTime
+        .map((date) => DateFormat('d-M-yyyy').format(date))
+        .join(', ');
   }
 }
