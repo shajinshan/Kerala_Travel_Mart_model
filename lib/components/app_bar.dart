@@ -1,7 +1,12 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:kerala_travel_mart/components/qr_scanner_screen.dart';
 import 'package:kerala_travel_mart/provider/theme_provider.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomAppBar({super.key});
@@ -30,26 +35,30 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           // Theme Toggle Button
-          Consumer<ThemeProvider>(
-            builder: (context, themeProvider, child) {
-              return IconButton(
-                onPressed: themeProvider.changeTheme,
-                icon: Icon(
-                  themeProvider.isDarkMode
-                      ? Icons.light_mode_outlined
-                      : Icons.dark_mode_outlined,
-                  size: 30,
-                  color: themeProvider.isDarkMode ? Colors.white : Colors.black,
-                ),
-              );
-            },
-          ),
+          // Consumer<ThemeProvider>(
+          //   builder: (context, themeProvider, child) {
+          //     return IconButton(
+          //       onPressed: themeProvider.changeTheme,
+          //       icon: Icon(
+          //         themeProvider.isDarkMode
+          //             ? Icons.light_mode_outlined
+          //             : Icons.dark_mode_outlined,
+          //         size: 30,
+          //         color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+          //       ),
+          //     );
+          //   },
+          // ),
           // QR Code Icon with Gradient
           GestureDetector(
             onTap: () {
-              _openCamera(context);
-              //click this open camera on ondroid and ios how
+              
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const QrScannerScreen()));
             },
+            //click this open camera on ondroid and ios how
             child: Container(
               height: 40,
               width: 40,
@@ -71,20 +80,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
 //image
-  Future<void> _openCamera(BuildContext context) async {
-    final ImagePicker picker = ImagePicker();
-    try {
-      final XFile? image = await picker.pickImage(source: ImageSource.camera);
-      if (image != null) {
-        // Handle the captured image
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Image captured: ${image.path}')),
-        );
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to open camera: $e')),
-      );
-    }
-  }
+
 }

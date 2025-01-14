@@ -92,7 +92,7 @@ class _ExhibitorsDetailScreenState extends State<ExhibitorsDetailScreen> {
                   //Name Of Company
                   Text(
                     widget.company.companyName.toUpperCase(),
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    style:const  TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 10,
