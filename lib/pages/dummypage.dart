@@ -1,54 +1,18 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import '../colors/asserts.dart';
-import '../components/app_bar.dart';
-import '../components/shimmer_loading_widget.dart';
-import '../data/models/venue.dart';
-import '../data/models/venue_data_model.dart';
-import 'venue/venue_list.dart';
 
-class VenuePage extends StatefulWidget {
-  const VenuePage({super.key});
+import '../components/app_bar.dart';
+
+class Dummypage extends StatefulWidget {
+  const Dummypage({super.key});
 
   @override
-  State<VenuePage> createState() => _VenuePageState();
+  State<Dummypage> createState() => _FloorPlanPageState();
 }
 
-Timer? _timer;
-
-class _VenuePageState extends State<VenuePage> {
-  bool isLoading = true;
-  void startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 2), (timer) {
-      setState(() {
-        isLoading = false;
-      });
-    });
-  }
-
-  @override
-  void initState() {
-    startTimer();
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    _timer = null;
-    // TODO: implement dispose
-    super.dispose();
-  }
-
+class _FloorPlanPageState extends State<Dummypage> {
   @override
   Widget build(BuildContext context) {
-    //getting data
-    List<Venue> venuesList =
-        Provider.of<VenueDataModel>(context, listen: false).venues;
     return Scaffold(
       appBar: CustomAppBar(),
 
@@ -73,8 +37,10 @@ class _VenuePageState extends State<VenuePage> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: const LinearGradient(
-                          colors: [GlobalColor.color, GlobalColor.color]),
+                      gradient: const LinearGradient(colors: [
+                        Color.fromARGB(255, 89, 30, 30),
+                        Color.fromARGB(255, 126, 25, 25),
+                      ]),
                     ),
 
                     //text
@@ -82,7 +48,7 @@ class _VenuePageState extends State<VenuePage> {
                       padding: const EdgeInsets.only(top: 20, left: 20),
                       child: Text(
                         textAlign: TextAlign.start,
-                        "Venue Details",
+                        "Select a Floor Plan",
                         style: GoogleFonts.sarabun(
                             fontSize: 25,
                             color: Colors.white,
@@ -101,17 +67,13 @@ class _VenuePageState extends State<VenuePage> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              //chid widget
-              child: ListView.builder(
-                  itemCount: venuesList.length,
-                  itemBuilder: (context, index) {
-                    Venue venueDataModel = venuesList[index];
-                    return VenueList(
-                      venue: venueDataModel,
-                    );
-                  }),
+              child: Container(
+                color: const Color.fromARGB(255, 118, 74, 74),
+
+                //chid widget
+              ),
             ),
-          ),
+          )
         ],
       ),
     );

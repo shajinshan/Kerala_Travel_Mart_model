@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:kerala_travel_mart/components/app_bar.dart';
-import 'package:kerala_travel_mart/components/drawer.dart';
-import 'package:kerala_travel_mart/components/shimmer_loading_widget.dart';
-import 'package:kerala_travel_mart/pages/exhibitors_page.dart';
-import 'package:kerala_travel_mart/pages/floor_plan_page.dart';
-import 'package:kerala_travel_mart/pages/profile_page.dart';
-import 'package:kerala_travel_mart/pages/programmes_page.dart';
-import 'package:kerala_travel_mart/pages/venue_page.dart';
-
+import '../colors/asserts.dart';
+import '../components/app_bar.dart';
+import '../components/drawer.dart';
 import '../components/image_placeholder.dart';
+import '../pages/exhibitors_page.dart';
+import '../pages/floor_plan_page.dart';
+import '../pages/profile_page.dart';
+import '../pages/programmes_page.dart';
+import '../pages/quick_help_page.dart';
+import '../pages/venue_page.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -40,7 +40,7 @@ Map<String, IconData> title = {
   "My Meetings": Icons.meeting_room,
   "Venue": Icons.location_on,
   "Activities": Icons.calendar_month_sharp,
-  "KTM": Icons.people, // KTM could refer to bikes
+  "KITE": Icons.people, // KTM could refer to bikes
   "Moments": Icons.photo_album,
 };
 
@@ -104,10 +104,10 @@ class _MenuScreenState extends State<MenuScreen> {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const VenuePage()));
         return;
-       case "quick help":
+      case "quick help":
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const ShimmerLoading()));
-        return;  
+            MaterialPageRoute(builder: (context) => const QuickHelpPage()));
+        return;
 
       default:
         print(data);
@@ -125,24 +125,24 @@ class _MenuScreenState extends State<MenuScreen> {
         child: Column(
           children: [
             // Search Field
-            TextField(
-              decoration: InputDecoration(
-                filled: true,
-                labelText: "Search",
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: const BorderSide(
-                    color: Color.fromARGB(255, 239, 245, 248),
-                    width: 1.0,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
+            // TextField(
+            //   decoration: InputDecoration(
+            //     filled: true,
+            //     labelText: "Search",
+            //     prefixIcon: const Icon(Icons.search),
+            //     border: OutlineInputBorder(
+            //       borderRadius: BorderRadius.circular(10.0),
+            //     ),
+            //     enabledBorder: OutlineInputBorder(
+            //       borderRadius: BorderRadius.circular(10.0),
+            //       borderSide: const BorderSide(
+            //         color: Color.fromARGB(255, 239, 245, 248),
+            //         width: 1.0,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // const SizedBox(height: 10),
 
             // Image Carousel
             SizedBox(
@@ -211,8 +211,8 @@ class _MenuScreenState extends State<MenuScreen> {
                           height: 60,
                           width: 60,
                           decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                                colors: [Color(0xFF2B6A77), Color(0xFF2B6A77)]),
+                            gradient:const LinearGradient(
+                                colors: [GlobalColor.color, GlobalColor.color]),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Icon(

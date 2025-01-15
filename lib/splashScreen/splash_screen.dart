@@ -17,7 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height * 0.8,
           width: MediaQuery.of(context).size.width * 0.9,
-          child: Lottie.asset("assets/images/travel.json"),
+          child: Image.asset("assets/icons/logo.png"),
+          // child: Lottie.asset("assets/images/travel.json"),
         ),
       ),
     );

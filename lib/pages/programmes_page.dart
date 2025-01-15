@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kerala_travel_mart/components/app_bar.dart';
+
+import '../colors/asserts.dart';
+import '../components/app_bar.dart';
 
 class ProgrammesPage extends StatefulWidget {
   const ProgrammesPage({super.key});
@@ -40,15 +42,15 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: const LinearGradient(colors: [
-                        Color.fromARGB(255, 89, 30, 30),
-                        Color.fromARGB(255, 126, 25, 25),
+                      gradient:const LinearGradient(colors: [
+                        GlobalColor.color,
+                        GlobalColor.color,
                       ]),
                     ),
 
                     //text
                     child: Padding(
-                      padding:const EdgeInsets.only(top: 20, left: 20),
+                      padding: const EdgeInsets.only(top: 20, left: 20),
                       child: Text(
                         textAlign: TextAlign.start,
                         "Programme Schedule",

@@ -1,3 +1,6 @@
 import 'package:flutter/material.dart';
 
-final Color _color =   Color.fromARGB(255, 52, 175, 48);
+class GlobalColor {
+  static const Color color =  Color(0xFF2B6A77);
+  
+}

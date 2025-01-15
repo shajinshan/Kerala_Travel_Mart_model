@@ -5,7 +5,7 @@
 
 
     <application
-        android:label="kerala_travel_mart"
+        android:label="karnataka_travel_expo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

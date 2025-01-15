@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kerala_travel_mart/data/models/company.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../components/app_bar.dart';
+import '../../data/models/company.dart';
 import '../../data/models/company_data_model.dart';
 
 class ExhibitorsDetailScreen extends StatefulWidget {

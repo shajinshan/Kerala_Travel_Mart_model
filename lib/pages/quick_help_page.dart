@@ -1,54 +1,27 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+
 import '../colors/asserts.dart';
 import '../components/app_bar.dart';
-import '../components/shimmer_loading_widget.dart';
-import '../data/models/venue.dart';
-import '../data/models/venue_data_model.dart';
-import 'venue/venue_list.dart';
+import 'quick_help/list_item_quickhelp.dart';
 
-class VenuePage extends StatefulWidget {
-  const VenuePage({super.key});
+class QuickHelpPage extends StatefulWidget {
+  const QuickHelpPage({super.key});
 
   @override
-  State<VenuePage> createState() => _VenuePageState();
+  State<QuickHelpPage> createState() => _QuickHelpPageState();
 }
 
-Timer? _timer;
+class _QuickHelpPageState extends State<QuickHelpPage> {
+  //questions
+  List<String> questions = ["What is KITE?"];
 
-class _VenuePageState extends State<VenuePage> {
-  bool isLoading = true;
-  void startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 2), (timer) {
-      setState(() {
-        isLoading = false;
-      });
-    });
-  }
-
-  @override
-  void initState() {
-    startTimer();
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    _timer = null;
-    // TODO: implement dispose
-    super.dispose();
-  }
-
+  //answers
+  List<String> answers = [
+    "Kerala Travel Mart(KTM) is a biennial travel mart event aimed at attracting global and international buyers to Kerala, showcasing opportunities in the State's tourism sector."
+  ];
   @override
   Widget build(BuildContext context) {
-    //getting data
-    List<Venue> venuesList =
-        Provider.of<VenueDataModel>(context, listen: false).venues;
     return Scaffold(
       appBar: CustomAppBar(),
 
@@ -73,7 +46,7 @@ class _VenuePageState extends State<VenuePage> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: const LinearGradient(
+                      gradient: LinearGradient(
                           colors: [GlobalColor.color, GlobalColor.color]),
                     ),
 
@@ -82,7 +55,7 @@ class _VenuePageState extends State<VenuePage> {
                       padding: const EdgeInsets.only(top: 20, left: 20),
                       child: Text(
                         textAlign: TextAlign.start,
-                        "Venue Details",
+                        "KITE 2024 Event FAQ",
                         style: GoogleFonts.sarabun(
                             fontSize: 25,
                             color: Colors.white,
@@ -100,18 +73,16 @@ class _VenuePageState extends State<VenuePage> {
           // Data loaded here
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              //chid widget
-              child: ListView.builder(
-                  itemCount: venuesList.length,
-                  itemBuilder: (context, index) {
-                    Venue venueDataModel = venuesList[index];
-                    return VenueList(
-                      venue: venueDataModel,
-                    );
-                  }),
-            ),
-          ),
+                padding: const EdgeInsets.all(8.0),
+                child: ListView.builder(
+                    itemCount: questions.length,
+                    itemBuilder: (context, index) {
+                      return ListItemQuickhelp(
+                        question: questions[index],
+                        answer: answers[index],
+                      );
+                    })),
+          )
         ],
       ),
     );

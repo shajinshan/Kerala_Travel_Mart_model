@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kerala_travel_mart/data/models/company.dart';
+
+import '../data/models/company.dart';
 
 // ignore: must_be_immutable
 class ListOfCompany extends StatefulWidget {

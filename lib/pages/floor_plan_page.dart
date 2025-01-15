@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../colors/asserts.dart';
 import '../components/app_bar.dart';
+import 'floor_plan/list_floor_plans.dart';
 
 class FloorPlanPage extends StatefulWidget {
   const FloorPlanPage({super.key});
@@ -11,6 +13,10 @@ class FloorPlanPage extends StatefulWidget {
 }
 
 class _FloorPlanPageState extends State<FloorPlanPage> {
+  //floor title
+  List<String> floorTitle = [
+    "Complete Floor Plan",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,18 +43,18 @@ class _FloorPlanPageState extends State<FloorPlanPage> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: const LinearGradient(colors: [
-                        Color.fromARGB(255, 89, 30, 30),
-                        Color.fromARGB(255, 126, 25, 25),
+                      gradient:const LinearGradient(colors: [
+                        GlobalColor.color,
+                        GlobalColor.color,
                       ]),
                     ),
 
                     //text
                     child: Padding(
-                      padding:const EdgeInsets.only(top: 20, left: 20),
+                      padding: const EdgeInsets.only(top: 20, left: 20),
                       child: Text(
                         textAlign: TextAlign.start,
-                        "Floor Plan",
+                        "Select a Floor Plan",
                         style: GoogleFonts.sarabun(
                             fontSize: 25,
                             color: Colors.white,
@@ -66,13 +72,14 @@ class _FloorPlanPageState extends State<FloorPlanPage> {
           // Data loaded here
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                color: const Color.fromARGB(255, 118, 74, 74),
-
-                //chid widget
-              ),
-            ),
+                padding: const EdgeInsets.all(8.0),
+                child: ListView.builder(
+                    itemCount: floorTitle.length,
+                    itemBuilder: (context, index) {
+                      return ListFloorPlans(
+                        floorTitle: floorTitle[index],
+                      );
+                    })),
           )
         ],
       ),

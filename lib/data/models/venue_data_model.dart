@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:kerala_travel_mart/data/models/venue.dart';
+
+import 'venue.dart';
 
 class VenueDataModel extends ChangeNotifier {
   List<Venue> venues = [

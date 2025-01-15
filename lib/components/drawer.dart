@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:kerala_travel_mart/provider/login_data_provider.dart';
-import 'package:kerala_travel_mart/screens/company/company_login.dart';
+import 'package:karnataka_travel_expo/components/widgets/linear_process_indicator.dart';
+import 'package:karnataka_travel_expo/screens/LoginScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
+import '../colors/asserts.dart';
 import '../data/models/company_data_model.dart';
+import '../provider/login_data_provider.dart';
+import '../screens/company/company_login.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -49,8 +52,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
             child: Container(
               decoration: const BoxDecoration(
                   gradient: LinearGradient(colors: [
-                Color(0xFF2B6A77),
-                Color(0xFF2B6A77),
+                GlobalColor.color,
+                GlobalColor.color,
               ])),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -80,14 +83,17 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   ),
 
                   //Sync Data
-                  const Padding(
-                    padding: EdgeInsets.only(left: 50),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 50),
                     child: ListTile(
-                      leading: Icon(
+                      onTap: () {
+                        syncData(context);
+                      },
+                      leading: const Icon(
                         Icons.refresh,
                         color: Colors.white,
                       ),
-                      title: Text("Sync Data",
+                      title: const Text("Sync Data",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -170,7 +176,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const CompanyLogin()));
+                                          const LoginScreen()));
                             },
                             leading: const Icon(
                               Icons.login,
@@ -220,6 +226,22 @@ class _CustomDrawerState extends State<CustomDrawer> {
         ],
       ),
     );
+  }
+
+//Loader for Sync Data
+  void syncData(BuildContext context) async {
+    showDialog(
+      context: context,
+      barrierDismissible: false, // Prevents closing
+      builder: (BuildContext context) {
+        return const CustomLinearProcessIndicator();
+      },
+    );
+
+    await Future.delayed(
+        Duration(seconds: 3)); // Replace with actual sync logic
+
+    Navigator.of(context).pop();
   }
 
   //logout msg alert
