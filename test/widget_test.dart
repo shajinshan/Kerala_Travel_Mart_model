@@ -7,8 +7,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:karnataka_travel_expo/main.dart';
 
-import 'package:kerala_travel_mart/main.dart';
+
+
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

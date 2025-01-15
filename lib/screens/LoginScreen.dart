@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kerala_travel_mart/screens/MenuScreen.dart';
-import 'package:kerala_travel_mart/screens/company/company_login.dart';
-import 'package:kerala_travel_mart/splashScreen/splash_screen.dart';
+
+import '../splashScreen/splash_screen.dart';
+import 'MenuScreen.dart';
+import 'company/company_login.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -93,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(6))),
                           child: const Text(
-                            "Comapany Login",
+                            "Buyer",
                             style: TextStyle(
                                 color: Color.fromARGB(255, 255, 255, 255),
                                 fontSize: 18),

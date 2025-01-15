@@ -2,14 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kerala_travel_mart/components/app_bar.dart';
-import 'package:kerala_travel_mart/components/list_of_company.dart';
-import 'package:kerala_travel_mart/components/shimmer_loading_widget.dart';
-import 'package:kerala_travel_mart/data/models/company.dart';
-import 'package:kerala_travel_mart/data/models/company_data_model.dart';
-import 'package:kerala_travel_mart/pages/exhibitor/exhibitors_detail_screen.dart';
-import 'package:kerala_travel_mart/shimmer/profile_shimmer_loading.dart';
+
 import 'package:provider/provider.dart';
+
+import '../colors/asserts.dart';
+import '../components/app_bar.dart';
+import '../components/list_of_company.dart';
+import '../components/shimmer_loading_widget.dart';
+import '../data/models/company.dart';
+import '../data/models/company_data_model.dart';
+import 'exhibitor/exhibitors_detail_screen.dart';
 
 class ExhibitorsPage extends StatefulWidget {
   const ExhibitorsPage({super.key});
@@ -89,11 +91,8 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color.fromARGB(255, 89, 30, 30),
-                              Color.fromARGB(255, 126, 25, 25),
-                            ],
+                          gradient:const LinearGradient(
+                            colors: [GlobalColor.color, GlobalColor.color],
                           ),
                         ),
                         child: Padding(
@@ -259,7 +258,6 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                                             ExhibitorsDetailScreen(
                                               company: filteredData[index],
                                             )));
-                                
                               },
                               child: ListOfCompany(
                                 company: company,

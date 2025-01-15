@@ -1,12 +1,9 @@
-import 'dart:typed_data';
+
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:kerala_travel_mart/components/qr_scanner_screen.dart';
-import 'package:kerala_travel_mart/provider/theme_provider.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+
+import 'qr_scanner_screen.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomAppBar({super.key});

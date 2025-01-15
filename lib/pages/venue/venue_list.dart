@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kerala_travel_mart/data/models/venue.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../data/models/venue.dart';
 
 class VenueList extends StatelessWidget {
   Venue venue;

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kerala_travel_mart/data/models/company_data_model.dart';
-import 'package:kerala_travel_mart/provider/login_data_provider.dart';
-import 'package:kerala_travel_mart/screens/MenuScreen.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:provider/provider.dart';
+
+import '../../data/models/company_data_model.dart';
+import '../../provider/login_data_provider.dart';
+import '../MenuScreen.dart';
 
 class CompanyLogin extends StatefulWidget {
   const CompanyLogin({super.key});

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:kerala_travel_mart/data/models/company_data_model.dart';
-import 'package:kerala_travel_mart/data/models/venue_data_model.dart';
-import 'package:kerala_travel_mart/provider/login_data_provider.dart';
-import 'package:kerala_travel_mart/provider/theme_provider.dart';
-import 'package:kerala_travel_mart/screens/LoginScreen.dart';
-import 'package:kerala_travel_mart/screens/MenuScreen.dart';
-import 'package:kerala_travel_mart/splashScreen/splash_screen.dart';
 import 'package:provider/provider.dart';
+import 'data/models/company_data_model.dart';
+import 'data/models/venue_data_model.dart';
+import 'provider/login_data_provider.dart';
+import 'provider/theme_provider.dart';
+import 'screens/LoginScreen.dart';
+import 'screens/MenuScreen.dart';
+import 'splashScreen/splash_screen.dart';
 
 void main() {
   runApp(
@@ -61,21 +61,20 @@ class _InitialScreenState extends State<InitialScreen> {
     String? userId =
         await Provider.of<LoginDataProvider>(context, listen: false)
             .getUserId();
-  
 
     // Navigate to the appropriate screen
     if (userId != null) {
-        Provider.of<CompanyDataModel>(context, listen: false).updateLoginId(userId);
-         Provider.of<CompanyDataModel>(context, listen: false).loginUpdate(true);
+      Provider.of<CompanyDataModel>(context, listen: false)
+          .updateLoginId(userId);
+      Provider.of<CompanyDataModel>(context, listen: false).loginUpdate(true);
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) =>const MenuScreen()),
-
+        MaterialPageRoute(builder: (context) => const MenuScreen()),
       );
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) =>const LoginScreen()),
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
       );
     }
   }

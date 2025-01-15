@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kerala_travel_mart/data/models/company.dart';
-import 'package:kerala_travel_mart/screens/company/company_login.dart';
-import 'package:kerala_travel_mart/shimmer/profile_shimmer_loading.dart';
+import 'package:karnataka_travel_expo/colors/asserts.dart';
 import 'package:provider/provider.dart';
 
 import '../components/app_bar.dart';
+import '../data/models/company.dart';
 import '../data/models/company_data_model.dart';
+import '../screens/company/company_login.dart';
+import '../shimmer/profile_shimmer_loading.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -135,9 +136,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: const LinearGradient(colors: [
-                        Color.fromARGB(255, 89, 30, 30),
-                        Color.fromARGB(255, 126, 25, 25),
+                      gradient:const LinearGradient(colors: [
+                        GlobalColor.color,
+                        GlobalColor.color,
                         // Color(0xFF2B6A77), Color(0xFF2B6A77)
                       ]),
                     ),

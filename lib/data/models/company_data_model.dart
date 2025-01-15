@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:kerala_travel_mart/data/models/company.dart';
+
+import 'company.dart';
 
 class CompanyDataModel extends ChangeNotifier {
   List<Company> allCompanyProfile = [
@@ -209,17 +210,6 @@ class CompanyDataModel extends ChangeNotifier {
     }
   }
 
-  //filter base location
-  List<Company> filterByLocation(String key) {
-    if (key.isEmpty) {
-      return allCompanyProfile;
-    } else {
-      return allCompanyProfile
-          .where((company) =>
-              company.state.toLowerCase().contains(key.toLowerCase()))
-          .toList();
-    }
-  }
 
   //get Single Company data
   Company? getCompanyData(String id) {
