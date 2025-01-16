@@ -46,7 +46,7 @@ class _QuickHelpPageState extends State<QuickHelpPage> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                           colors: [GlobalColor.color, GlobalColor.color]),
                     ),
 

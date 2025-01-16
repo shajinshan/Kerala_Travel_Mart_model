@@ -18,6 +18,18 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
     return Scaffold(
       body: Stack(
         children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10, top: 30),
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon:const Icon(Icons.arrow_back_ios_new)),
+              )
+            ],
+          ),
           mobile.MobileScanner(
             controller: mobile.MobileScannerController(
               detectionSpeed: mobile.DetectionSpeed.noDuplicates,
@@ -26,7 +38,6 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
             onDetect: (capture) {
               final List<mobile.Barcode> barcodes = capture.barcodes;
               final Uint8List? image = capture.image;
-
 
               if (image != null && barcodes.isNotEmpty) {
                 _showBarcodeDialog(context, image, barcodes.first.rawValue);

@@ -31,7 +31,6 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                // color: const Color.fromARGB(255, 255, 255, 255)
               ),
               width: double.infinity,
               child: Column(
@@ -42,7 +41,7 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient:const LinearGradient(colors: [
+                      gradient: const LinearGradient(colors: [
                         GlobalColor.color,
                         GlobalColor.color,
                       ]),
@@ -70,7 +69,6 @@ class _ProgrammesPageState extends State<ProgrammesPage> {
                   SizedBox(
                     height: 60,
                     width: double.infinity,
-                    // color: const Color.fromARGB(255, 255, 255, 255),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

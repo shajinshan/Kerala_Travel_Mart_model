@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../colors/asserts.dart';
 import '../components/app_bar.dart';
-import '../components/shimmer_loading_widget.dart';
 import '../data/models/venue.dart';
 import '../data/models/venue_data_model.dart';
 import 'venue/venue_list.dart';
