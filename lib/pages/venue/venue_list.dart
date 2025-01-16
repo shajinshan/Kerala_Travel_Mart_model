@@ -16,8 +16,20 @@ class VenueList extends StatelessWidget {
           child: Image.network(
             height: MediaQuery.of(context).size.height / 6,
             width: double.infinity,
-            "https://www.discoverkochi.com/wp-content/uploads/2020/05/Fort-Kochi-Beach.jpg",
+            venue.image,
             fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                color: Colors.grey[300],
+                height: MediaQuery.of(context).size.height / 6,
+                width: double.infinity,
+                alignment: Alignment.center,
+                child:const Text(
+                  "Couldn't load",
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+              );
+            },
           ),
         ),
         SizedBox(

@@ -7,6 +7,7 @@ import '../../components/app_bar.dart';
 import '../../data/models/company.dart';
 import '../../data/models/company_data_model.dart';
 
+// ignore: must_be_immutable
 class ExhibitorsDetailScreen extends StatefulWidget {
   Company company;
   ExhibitorsDetailScreen({super.key, required this.company});
@@ -183,6 +184,7 @@ class _ExhibitorsDetailScreenState extends State<ExhibitorsDetailScreen> {
 }
 
 //profile class
+// ignore: must_be_immutable
 class ExhibitorProfile extends StatelessWidget {
   Company company;
   ExhibitorProfile({super.key, required this.company});

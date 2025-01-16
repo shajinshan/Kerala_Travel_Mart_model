@@ -81,7 +81,7 @@ class _ExhibitorsPageState extends State<ExhibitorsPage> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    // color: Colors.white,
+                   
                   ),
                   width: double.infinity,
                   child: Column(

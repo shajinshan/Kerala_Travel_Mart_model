@@ -54,13 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 300,
                   decoration: BoxDecoration(
                       boxShadow: const [
-                        // BoxShadow(
-                        //   color: const Color.fromARGB(0, 255, 255, 255)
-                        //       .withOpacity(0.4),
-                        //   offset: const Offset(3, 4),
-                        //   spreadRadius: 3,
-                        //   blurRadius: 5,
-                        // )
+                        
                       ],
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(12)),
@@ -152,11 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.all(20),
                   decoration: const BoxDecoration(
                     boxShadow: [
-                      // BoxShadow(
-                      //     color: Colors.black.withOpacity(0.3),
-                      //     offset: const Offset(2, 3),
-                      //     blurRadius: 4,
-                      //     spreadRadius: 2)
+                      
                     ],
                     color: Color.fromARGB(255, 255, 255, 255),
                     borderRadius: BorderRadius.only(
